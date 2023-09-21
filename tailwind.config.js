@@ -15,7 +15,11 @@ export default {
     fontFamily: {
       nunito: ['Nunito Sans', 'sans-serif'],
     },
-    extend: {},
+    extend: {
+      spacing: {
+        '128': '32rem'
+      }
+    },
   },
   plugins: [],
 }

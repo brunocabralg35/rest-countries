@@ -1,9 +1,22 @@
 import { MagnifyingGlass } from "@phosphor-icons/react";
 import { useContext } from "react";
 import DataContext from "../context/DataContext";
+import { useNavigate } from "react-router-dom";
 
 function Home() {
   const { data } = useContext(DataContext);
+
+  const navigate = useNavigate();
+
+  const getRegions = () => {
+    const regions = [];
+    for (let i of data) {
+      if (!regions.includes(i.region)) {
+        regions.push(i.region);
+      }
+    }
+    return regions;
+  };
 
   return (
     <div className="Home text-darkerBlue">
@@ -21,6 +34,13 @@ function Home() {
         </div>
         <select className="py-4 pl-4 pr-20 rounded-md shadow-md" name="" id="">
           <option value="0">Filter by Region</option>
+          {getRegions().map((d, i) => {
+            return (
+              <option key={i} value={d}>
+                {d}
+              </option>
+            );
+          })}
         </select>
       </div>
       <div className="listagem justify-center flex gap-10 flex-wrap mt-10 px-5">
@@ -28,6 +48,7 @@ function Home() {
           return (
             <div
               key={i}
+              onClick={()=>navigate(`/${i}`)}
               className="card cursor-pointer pb-8 rounded-md shadow-md bg-whitey flex flex-col w-64 transition-all hover:scale-105 hover:shadow-xl"
             >
               <img
