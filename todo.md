@@ -7,10 +7,11 @@
 <!-- - Borders countries to countries with less than 3 countries -->
 <!-- - Click through to the border countries on the detail page -->
 <!-- - List all the currencies and languages -->
+<!-- - Filter countries by region -->
+<!-- - Search for a country using an input field -->
+<!-- - Toggle the color scheme between light and dark mode -->
+<!-- - View the optimal layout for the interface depending on their device's screen size -->
+<!-- - Fix useCallBack Warning -->
 
 <!-- To do: -->
-- Search for a country using an input field
-- Filter countries by region
-- View the optimal layout for the interface depending on their device's screen size
-- Toggle the color scheme between light and dark mode
-- Pagination on the homepage
+- Fix filter when navigating

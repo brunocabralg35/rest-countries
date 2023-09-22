@@ -2,10 +2,12 @@ import { useContext } from "react";
 import DataContext from "../context/DataContext";
 import { useNavigate, useParams } from "react-router-dom";
 import { ArrowLeft } from "@phosphor-icons/react";
+import ThemeContext from "../context/ThemeContext";
 
 function Country() {
   const { i } = useParams();
   const { data } = useContext(DataContext);
+  const { theme } = useContext(ThemeContext);
 
   const navigate = useNavigate();
 
@@ -30,20 +32,30 @@ function Country() {
   };
 
   return (
-    <div className="flex flex-col gap-9 px-12 items-center">
-      <div className="countryInfo flex gap-16 items-center mt-24 relative">
+    <div
+      className={`${
+        theme === "dark" ? "text-whitey" : "text-darkerBlue"
+      }  flex flex-col gap-9 md:px-16 px-6 lg:items-center pb-10 lg:pb-0`}
+    >
+      <div className="countryInfo flex flex-col lg:flex-row gap-16 lg:items-center mt-24 relative">
         <button
           onClick={() => navigate("/")}
-          className="hover:shadow-xl hover:scale-105 left-0 -top-20 absolute transition-all flex py-2 items-center gap-2 shadow-md w-32 justify-center rounded-md"
+          className={`${
+            theme === "dark" ? "bg-darkBlue" : ""
+          } hover:shadow-xl hover:scale-105 left-0 -top-20 absolute transition-all flex py-2 items-center gap-2 shadow-md w-32 justify-center rounded-md`}
         >
           <ArrowLeft size={25} /> Back
         </button>
         <div className="flag">
-          <img src={country.flag} className="w-128 h-96 object-cover" alt="" />
+          <img
+            src={country.flag}
+            className="lg:w-128 w-full h-96 object-cover"
+            alt=""
+          />
         </div>
-        <div className="content gap-6 flex flex-col w-128">
+        <div className="content gap-6 flex flex-col lg:w-128">
           <h1 className="text-3xl font-bold">{country.name}</h1>
-          <div className="columns flex justify-between">
+          <div className="columns flex lg:flex-row flex-col gap-10 lg:gap-0 lg:justify-between">
             <div className="column1 flex flex-col gap-2">
               <div className="flex gap-1">
                 <p>Native Name:</p>{" "}
@@ -105,7 +117,7 @@ function Country() {
           </div>
           <div className="borderCountries mt-8 flex gap-5 items-center">
             <p>Border Countries:</p>
-            <div className="list flex gap-3">
+            <div className="list flex gap-3 flex-wrap lg:flex-nowrap">
               {getBorders().length == 0 && (
                 <p className="font-light">No borders</p>
               )}
@@ -118,7 +130,9 @@ function Country() {
                       onClick={() => {
                         navigateToCountry(d);
                       }}
-                      className="px-5 py-2 shadow-lg rounded-md font-light transition-all hover:scale-105 hover:shadow-xl"
+                      className={`${
+                        theme === "dark" ? "bg-darkBlue" : ""
+                      } px-5 py-2 shadow-lg rounded-md font-light transition-all hover:scale-105 hover:shadow-xl`}
                     >
                       {d.name}
                     </button>
