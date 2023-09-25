@@ -75,7 +75,7 @@ function Country() {
                 <p className="font-light">{country.subregion}</p>
               </div>
               <div className="flex gap-1">
-                <p>Capital:</p> <p className="font-light">{country.capital}</p>
+                <p>Capital:</p> <p className="font-light"> {!country.capital ? "No Capital" : country.capital}</p>
               </div>
             </div>
             <div className="column1 flex flex-col gap-2">

@@ -58,6 +58,11 @@ function Home() {
     setCountriesList(newList);
   }, [regionSearch, data]);
 
+  const navigateToCountry = (country) => {
+    const isEqual = (element) => element === country;
+    navigate(`/${data.findIndex(isEqual)}`);
+  };
+
   return (
     <div
       className={theme === "dark" ? "text-whitey Home" : "Home text-darkerBlue"}
@@ -103,7 +108,9 @@ function Home() {
             return (
               <div
                 key={i}
-                onClick={() => navigate(`/${i}`)}
+                onClick={() => {
+                  navigateToCountry(d);
+                }}
                 className={`${
                   theme === "dark" ? "bg-darkBlue" : "bg-whitey"
                 } card cursor-pointer pb-8 rounded-md shadow-md flex flex-col md:w-64 transition-all hover:scale-105 hover:shadow-xl w-80`}
@@ -128,7 +135,9 @@ function Home() {
                     </div>
                     <div className="flex gap-2">
                       <p>Capital: </p>
-                      <p className="font-thin">{d.capital}</p>
+                      <p className="font-thin">
+                        {!d.capital ? "No Capital" : d.capital}
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -140,7 +149,9 @@ function Home() {
             return (
               <div
                 key={i}
-                onClick={() => navigate(`/${i}`)}
+                onClick={() => {
+                  navigateToCountry(d);
+                }}
                 className={`${
                   theme === "dark" ? "bg-darkBlue" : "bg-whitey"
                 } card cursor-pointer pb-8 rounded-md shadow-md flex flex-col md:w-64 transition-all hover:scale-105 hover:shadow-xl w-80`}
@@ -165,7 +176,9 @@ function Home() {
                     </div>
                     <div className="flex gap-2">
                       <p>Capital: </p>
-                      <p className="font-thin">{d.capital}</p>
+                      <p className="font-thin">
+                        {!d.capital ? "No Capital" : d.capital}
+                      </p>
                     </div>
                   </div>
                 </div>
