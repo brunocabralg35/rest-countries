@@ -37,7 +37,7 @@ function Country() {
         theme === "dark" ? "text-whitey" : "text-darkerBlue"
       }  flex flex-col gap-9 md:px-16 px-6 lg:items-center pb-10 lg:pb-0`}
     >
-      <div className="countryInfo flex flex-col lg:flex-row gap-16 lg:items-center mt-24 relative">
+      <div className="countryInfo flex flex-col lg:flex-row gap-10 lg:gap-16 lg:items-center mt-24 relative">
         <button
           onClick={() => navigate("/")}
           className={`${
@@ -49,13 +49,13 @@ function Country() {
         <div className="flag">
           <img
             src={country.flag}
-            className="lg:w-128 w-full h-96 object-cover"
+            className="lg:w-128 lg:h-96 w-full object-cover"
             alt=""
           />
         </div>
         <div className="content gap-6 flex flex-col lg:w-128">
           <h1 className="text-3xl font-bold">{country.name}</h1>
-          <div className="columns flex lg:flex-row flex-col gap-10 lg:gap-0 lg:justify-between">
+          <div className="columns flex lg:flex-row md:flex-row md:justify-between flex-col gap-10 lg:gap-0 lg:justify-between">
             <div className="column1 flex flex-col gap-2">
               <div className="flex gap-1">
                 <p>Native Name:</p>{" "}
@@ -75,7 +75,11 @@ function Country() {
                 <p className="font-light">{country.subregion}</p>
               </div>
               <div className="flex gap-1">
-                <p>Capital:</p> <p className="font-light"> {!country.capital ? "No Capital" : country.capital}</p>
+                <p>Capital:</p>{" "}
+                <p className="font-light">
+                  {" "}
+                  {!country.capital ? "No Capital" : country.capital}
+                </p>
               </div>
             </div>
             <div className="column1 flex flex-col gap-2">
