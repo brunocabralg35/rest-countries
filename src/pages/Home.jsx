@@ -33,7 +33,7 @@ function Home() {
       countriesList.filter((d) => {
         const countryName = d.name.toLowerCase();
 
-        if (countryName.startsWith(e)) {
+        if (countryName.startsWith(e.toLowerCase())) {
           arr.push(d);
         }
       });
